@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-const path = require('path')
+const path = require("path");
 
 const articlesRoute = require("./routes/articlesRoute");
 
@@ -24,7 +24,13 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-
+app.use(morgan("tiny"));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../client", "build")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
+//   });
+// }
 app.use(express.static(path.join(__dirname, "../client", "build")))
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "build", "index.html"));

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/ksoft-logo.png";
 
